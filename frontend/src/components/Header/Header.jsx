@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Container, Row, Button } from "reactstrap";
 import { NavLink, Link } from "react-router-dom";
 
@@ -8,21 +8,42 @@ import "./header.css";
 const nav__links = [
   {
     path: "/home",
-    display: "Home",
+    display: "Trang chủ",
   },
   {
     path: "/about",
-    display: "About",
+    display: "Liên hệ",
   },
   {
     path: "/tours",
-    display: "Tours",
+    display: "Tour du lịch",
   },
 ];
 
 const Header = () => {
+  const headerRef = useRef(null);
+
+  const stickyHeaderFunc = () => {
+    window.addEventListener("scroll", () => {
+      if (
+        document.body.scrollTop > 80 ||
+        document.documentElement.scrollTop > 80
+      ) {
+        headerRef.current.classList.add("sticky__header");
+      } else {
+        headerRef.current.classList.remove("sticky__header");
+      }
+    });
+  };
+
+  useEffect(() => {
+    stickyHeaderFunc();
+
+    return window.removeEventListener("scroll", stickyHeaderFunc);
+  });
+
   return (
-    <header className="header">
+    <header className="header" ref={headerRef}>
       <Container>
         <Row>
           <div className="nav__wrapper d-flex align-items-center justify-content-between">
@@ -52,10 +73,10 @@ const Header = () => {
             <div className="nav__right d-flex align-items-center gap-4">
               <div className="nav__btns d-flex align-items-center gap-4">
                 <Button className="btn secondary__btn">
-                  <Link to="/login">Login</Link>
+                  <Link to="/login">Đăng nhập</Link>
                 </Button>
                 <Button className="btn primary__btn">
-                  <Link to="/register">Register</Link>
+                  <Link to="/register">Đăng ký</Link>
                 </Button>
               </div>
               {/* ICON MOBILE_MENU */}
