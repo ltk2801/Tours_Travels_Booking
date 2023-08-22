@@ -55,7 +55,7 @@ const Home = () => {
             </Col>
 
             <Col lg="2">
-              <div className="hero__img-box mt-4">
+              <div className="hero__img-box hero__video-box mt-4">
                 <video src={heroVideo} alt="" controls />
               </div>
             </Col>
@@ -75,8 +75,10 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="3">
-              <h5 className="services__subtitle">What we serve</h5>
-              <h2 className="services__title">We offer our best services</h2>
+              <h5 className="services__subtitle">Chúng tôi cung cấp</h5>
+              <h2 className="services__title">
+                Chúng tôi đem đến những dịch vụ tốt nhất của mình
+              </h2>
             </Col>
             <ServiceList />
           </Row>
@@ -88,8 +90,10 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12" className="mb-5">
-              <Subtitle subtitle={"Explore"} />
-              <h2 className="featured__tour-title">Our featured tours</h2>
+              <Subtitle subtitle={"Khám phá"} />
+              <h2 className="featured__tour-title">
+                Các tour nổi bật của chúng tôi
+              </h2>
             </Col>
             <FeaturedTourList />
           </Row>
@@ -101,30 +105,36 @@ const Home = () => {
           <Row>
             <Col lg="6">
               <div className="experience__content">
-                <Subtitle subtitle={"Experience"} />
-                <h2>
-                  With our all experience <br /> we will serve you
-                </h2>
+                <Subtitle subtitle={"Kinh nghiệm"} />
+                <h3>
+                  Với tất cả kinh nghiệm của chúng tôi <br /> chúng tôi sẽ phục
+                  vụ bạn 1 cách tốt nhất
+                </h3>
                 <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Cupiditate nam dolor corporis.
-                  <br />
-                  Sipisicing elit, eum aliquid consequatur necessitatibus?
+                  Khi bạn bước chân vào thế giới du lịch với chúng tôi, bạn đang
+                  mở cánh cửa đến những trải nghiệm không giới hạn. Với nhiều
+                  năm hoạt động trong ngành và niềm đam mê , chúng tôi tự hào là
+                  người bạn đồng hành đáng tin cậy.
+                  <br /> <br />
+                  Từ việc lập kế hoạch tỉ mỉ đến việc thăm thú các điểm đến thú
+                  vị, chúng tôi sẽ tập trung vào mọi chi tiết nhằm mang đến cho
+                  bạn một hành trình không chỉ là đi du lịch, mà còn là một
+                  chuyến phiêu lưu đáng nhớ.
                 </p>
               </div>
 
               <div className="counter__wrapper d-flex align-items-center gap-5">
                 <div className="counter__box">
                   <span>12k+</span>
-                  <h6>Successful trip</h6>
+                  <h6>Chuyến đi thành công</h6>
                 </div>
                 <div className="counter__box">
                   <span>2k+</span>
-                  <h6>Regular clients</h6>
+                  <h6>Khách hàng thân thiết</h6>
                 </div>
                 <div className="counter__box">
                   <span>15</span>
-                  <h6>Years experience</h6>
+                  <h6>Năm kinh nghiệm</h6>
                 </div>
               </div>
             </Col>
@@ -146,7 +156,7 @@ const Home = () => {
               <Subtitle subtitle={"Gallery"} />
               <h2 className="gallery__title">
                 {" "}
-                Visit our customers tour gallery{" "}
+                Một số hình ảnh tour du lịch của khách hàng của chúng tôi{" "}
               </h2>
             </Col>
             <Col lg="12">
@@ -161,10 +171,10 @@ const Home = () => {
         <Container>
           <Row>
             <Col lg="12">
-              <Subtitle subtitle={"Fans Love"} />
+              <Subtitle subtitle={"Tình cảm của khách hàng"} />
               <h2 className="testimonial__title">
                 {" "}
-                What our fans say about us{" "}
+                Khách hàng nói gì về chúng tôi{" "}
               </h2>
             </Col>
             <Col lg="12">

@@ -120,3 +120,43 @@
 .review__item span {
   font-weight: 500;
 }
+
+.rating {
+  display: inline-block;
+  position: relative;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.rating label:before {
+  content: "★";
+  display: inline-block;
+  position: relative;
+  font-size: inherit;
+}
+
+.rating input:checked ~ label:before {
+  color: var(--secondary-color);
+}
+
+@media only screen and (max-width: 768px) {
+  .tour__extra-details {
+    flex-wrap: wrap;
+    row-gap: 1rem;
+  }
+
+  .tour__extra-details span {
+    font-size: 0.9rem !important;
+  }
+
+  .tour__extra-details span i {
+    font-size: 1rem;
+  }
+}

@@ -1,43 +1,73 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import "./booking.css";
 import { Form, FormGroup, ListGroup, ListGroupItem, Button } from "reactstrap";
 
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
+import { BASE_URL } from "../../utils/config";
 
 const Booking = ({ tour, avgRating }) => {
-  const { price, reviews } = tour;
-
+  const { price, reviews, title } = tour;
   const navigate = useNavigate();
-  const [credentials, setCredentials] = useState({
-    userId: "01",
-    userEmail: "example@gmail.com",
-    fullName: "Luu Tuan Khanh",
-    phone: "123456789",
+
+  const { user } = useContext(AuthContext);
+
+  const [booking, setBooking] = useState({
+    userId: user && user._id,
+    userEmail: user && user.email,
+    tourName: title,
+    fullName: "",
+    phone: "",
     guestSize: 1,
     bookAt: "",
   });
 
   const handleChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    setBooking((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const serviceFee = 10;
+  const serviceFee = 200000;
   const totalAmount =
-    Number(price) * Number(credentials.guestSize) + Number(serviceFee);
+    Number(price) * Number(booking.guestSize) + Number(serviceFee);
 
   // send data to the server
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
-    // console.log(credentials);
-    navigate("/thank-you");
+
+    try {
+      if (!user || user === undefined || user === null) {
+        return alert("Vui lòng đăng nhập để book tour");
+      }
+      console.log(booking);
+      const res = await fetch(`${BASE_URL}/booking/`, {
+        method: "post",
+        headers: {
+          "content-type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(booking),
+      });
+      const result = await res.json();
+
+      if (!res.ok) {
+        return alert(result.message);
+      }
+      navigate("/thank-you");
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   return (
     <div className="booking">
       <div className="booking__top d-flex align-items-center justify-content-between">
         <h3>
-          ${price} <span>/per person</span>
+          {new Intl.NumberFormat("vi-VN", {
+            style: "currency",
+            currency: "VND",
+          }).format(price)}{" "}
+          <span>/ 1 người</span>
         </h3>
         <span className="tour__rating d-flex align-items-center ">
           <i className="ri-star-s-fill"></i>
@@ -48,12 +78,12 @@ const Booking = ({ tour, avgRating }) => {
       {/* Booking Form */}
 
       <div className="booking__form">
-        <h5>Information</h5>
+        <h5>Thông tin liên lạc</h5>
         <Form className="booking__info-form" onSubmit={handleClick}>
           <FormGroup>
             <input
               type="text"
-              placeholder="Full Name"
+              placeholder="Họ tên quý khách"
               id="fullName"
               required
               onChange={handleChange}
@@ -62,7 +92,7 @@ const Booking = ({ tour, avgRating }) => {
           <FormGroup>
             <input
               type="number"
-              placeholder="Phone"
+              placeholder="Số điện thoại"
               id="phone"
               required
               onChange={handleChange}
@@ -75,7 +105,7 @@ const Booking = ({ tour, avgRating }) => {
               id="bookAt"
               required
               onChange={handleChange}
-              defaultValue={new Date().toISOString().split("T")[0]}
+              min={new Date().toISOString().split("T")[0]}
             />
             <input
               type="number"
@@ -95,17 +125,39 @@ const Booking = ({ tour, avgRating }) => {
         <ListGroup>
           <ListGroupItem className="border-0 px-0">
             <h5 className="d-flex align-items-center gap-1">
-              ${price} <i className="ri-close-line"></i>1 person
+              {new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+              }).format(price)}{" "}
+              D <i className="ri-close-line"></i>1 người
             </h5>
-            <span> ${price}</span>
+            <span>
+              {" "}
+              {new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+              }).format(price)}{" "}
+            </span>
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0">
-            <h5>Service charge</h5>
-            <span> ${serviceFee}</span>
+            <h5>Phí dịch vụ</h5>
+            <span>
+              {" "}
+              {new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+              }).format(serviceFee)}{" "}
+            </span>
           </ListGroupItem>
           <ListGroupItem className="border-0 px-0 total">
             <h5>Total</h5>
-            <span> ${totalAmount}</span>
+            <span>
+              {" "}
+              {new Intl.NumberFormat("vi-VN", {
+                style: "currency",
+                currency: "VND",
+              }).format(totalAmount)}{" "}
+            </span>
           </ListGroupItem>
         </ListGroup>
 
@@ -113,7 +165,7 @@ const Booking = ({ tour, avgRating }) => {
           className="btn primary__btn w-100 mt-4 fw-bold"
           onClick={handleClick}
         >
-          Book Now !
+          Book Ngay !
         </Button>
       </div>
     </div>

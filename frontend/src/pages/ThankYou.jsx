@@ -14,12 +14,12 @@ const ThankYou = () => {
                 <i className="ri-checkbox-circle-line"></i>
               </span>
               <h1 className="mb-3 fw-semibold">
-                Thank You<i class="ri-heart-fill"></i>{" "}
+                Cảm ơn khách hàng<i class="ri-heart-fill"></i>{" "}
               </h1>
-              <h3 className="mb-4">Your tour is booked.</h3>
+              <h3 className="mb-4">Tour của bạn đã được book thành công</h3>
 
               <Button className="btn primary__btn w-25">
-                <Link to="/home">Back To Home</Link>
+                <Link to="/home">Quay về trang chủ</Link>
               </Button>
             </div>
           </Col>

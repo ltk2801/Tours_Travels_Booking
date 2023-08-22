@@ -31,7 +31,7 @@ const Tours = () => {
 
   return (
     <>
-      <CommonSection title="All Tours" />
+      <CommonSection title="Tất cả tour" />
       <section>
         <Container>
           <Row>
@@ -51,7 +51,6 @@ const Tours = () => {
                   <TourCard tour={tour} />
                 </Col>
               ))}
-              <Col lg="3"></Col>
               <Col lg="12">
                 <div className="pagination d-flex align-items-center justify-content-center mt-4 gap-3">
                   {[...Array(pageCount).keys()].map((number) => (

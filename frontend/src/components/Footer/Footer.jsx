@@ -22,16 +22,16 @@ const quick__links = [
 
 const quick__links2 = [
   {
-    path: "/gallery",
-    display: "Gallery",
+    path: "/home",
+    display: "Phòng trưng bày",
   },
   {
     path: "/login",
-    display: "Login",
+    display: "Đăng nhập",
   },
   {
     path: "/register",
-    display: "Register",
+    display: "Đăng ký",
   },
 ];
 
@@ -46,8 +46,10 @@ const Footer = () => {
             <div className="logo">
               <img src={logo} alt="" />
               <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Deserunt, ducimus! Consectetur eveniet debitis suscipit aperiam.
+                Chúng tôi là người bạn đồng hành tin cậy trong mọi hành trình.
+                Với đội ngũ chuyên nghiệp và đam mê với du lịch, chúng tôi cam
+                kết mang đến cho bạn những trải nghiệm không giới hạn và những
+                kỷ niệm đáng trân trọng.
               </p>
 
               <div className="social__links d-flex align-items-center gap-4">
@@ -76,7 +78,7 @@ const Footer = () => {
           </Col>
 
           <Col lg="3">
-            <h5 className="footer__link-title">Discover</h5>
+            <h5 className="footer__link-title">Khám phá</h5>
 
             <ListGroup className="footer__quick-links">
               {quick__links.map((item, index) => (
@@ -89,7 +91,7 @@ const Footer = () => {
           </Col>
 
           <Col lg="3">
-            <h5 className="footer__link-title">Quick link</h5>
+            <h5 className="footer__link-title">Liên kết nhanh</h5>
 
             <ListGroup className="footer__quick-links">
               {quick__links2.map((item, index) => (
@@ -102,7 +104,7 @@ const Footer = () => {
           </Col>
 
           <Col lg="3">
-            <h5 className="footer__link-title">Contact</h5>
+            <h5 className="footer__link-title">Liên hệ </h5>
 
             <ListGroup className="footer__quick-links">
               <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-3">
@@ -110,9 +112,9 @@ const Footer = () => {
                   <span>
                     <i className="ri-map-pin-line"></i>
                   </span>
-                  Address:
+                  Địa chỉ:
                 </h6>
-                <p className="mb-0">Sylhet, Bangladesh</p>
+                <p className="mb-0">Hồ Chí Minh, Việt Nam</p>
               </ListGroupItem>
 
               <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-3">
@@ -132,15 +134,14 @@ const Footer = () => {
                   </span>
                   Phone:
                 </h6>
-                <p className="mb-0">+98 12345567</p>
+                <p className="mb-0">+84 0999999999</p>
               </ListGroupItem>
             </ListGroup>
           </Col>
 
           <Col lg="12" className="text-center pt-5">
             <p className="copyright">
-              Copyright &copy; {year}, design and develop by ltk2801. All rights
-              reserved.
+              Copyright &copy; {year} All rights reserved.
             </p>
           </Col>
         </Row>
