@@ -2,6 +2,7 @@
 MERN Stack Tours & Travels Thiết kế trang web đặt chỗ bằng ReactJs, Node Js, MongoDB, JWT và Cookies 💪. (Chứa Trang chủ, Trang Chuyến tham quan, Trang chi tiết chuyến tham quan, Trang kết quả tìm kiếm, Trang Cảm ơn, Trang Đăng nhập và Đăng ký, Xác thực dựa trên vai trò của Người dùng và Quản trị viên, Hệ thống đánh giá, Hệ thống đặt chỗ, (API phụ trợ hoàn chỉnh), v.v. Bao gồm Mã nguồn 🎁. Cảm ơn bạn!
 
 Go to the mongoDB atlas https://www.mongodb.com/atlas/database 
+
    . Click on sign in. if you don't have an account create a new account for free
    . Sign in and setup your new project
    . after compliting setup click connect and then conncet your application
